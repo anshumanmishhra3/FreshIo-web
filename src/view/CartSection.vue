@@ -2,6 +2,7 @@
     <NavBar />
     <div class="container mx-auto p-4">
         <!-- Cart Header -->
+        <button class=""></button>
         <div class="text-center mb-6">
             <h2 class="text-3xl font-bold text-gray-800">Your Cart</h2>
         </div>
@@ -28,7 +29,7 @@
         <div class="bg-white p-4 rounded-lg shadow-md mb-6">
             <div class="flex justify-between mb-2">
                 <p class="text-lg font-medium text-gray-700">Subtotal</p>
-                <p class="text-lg font-medium text-gray-700">$20.97</p>
+                <p class="text-lg font-medium text-gray-700">${{ (item.totalCount).toFixed(2) }}</p>
             </div>
             <div class="flex justify-between mb-2">
                 <p class="text-lg font-medium text-gray-700">Discount</p>

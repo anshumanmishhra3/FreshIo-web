@@ -1,12 +1,15 @@
 <template>
   <header class="bg-white shadow-md">
+      <router-link :to="'/'"></router-link>
+
     <nav class="flex items-center justify-around h-[5rem]">
       <!-- Logo -->
       <img
         src="https://demo2.pavothemes.com/freshio/wp-content/uploads/2020/08/logo.svg"
         alt="logo"
-        class="md:h-14 md:pl-12 mr-8 h-14"
-      />
+        class="md:h-14 md:pl-12 mr-8 h-14 cursor-pointer"
+      >
+
 
       <!-- Search bar -->
       <div
@@ -51,13 +54,13 @@
         <!-- Cart Icon -->
         
         <div
-          class="hidden lg:flex relative items-center justify-center w-12 h-12 border-2 border-yellow-500 rounded-full cursor-pointer cart-icon-hover"
+          class="flex relative items-center justify-center w-12 h-12 border-2 border-yellow-500 rounded-full cursor-pointer cart-icon-hover"
         >
         <router-link :to="'/cart'">
           <i class="fa fa-shopping-cart text-2xl"></i>
           <span
             class="absolute -top-1 -right-1 bg-yellow-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full"
-            >{{ product.quantity }}</span
+            >1</span
           >
         </router-link>
         </div>

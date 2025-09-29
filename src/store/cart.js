@@ -5,16 +5,17 @@ export const productStore = defineStore("cartStore", {
   state: () => {
     return {
       items: [],
-      
     };
+  },
+  getters: {
+    totalCount : (state)=> state.items.reduce((sum,item)=>sum+item.price*item.quantity,0)
   },
   actions: {
     addToCart(item) {
       let existing = this.items.find((d) => d.id == item.id);
       if (existing) {
         existing.quantity += 1;
-        console.log("existing");
-        console.log(existing);
+        toast.info("item quantity updated");
       } else {
         this.items.push({ ...item, quantity: 1 });
         toast.success("Items added to Cart");
@@ -26,12 +27,9 @@ export const productStore = defineStore("cartStore", {
         type: "default",
       });
     },
-    removeItem(id) {
-    
-      this.items = this.items.filter((e) => {
-           e.id !== id
-      });
-      console.log(this.items)
+    removeItem(existing) {
+      this.items = this.items.filter((t) => t.id != existing.id);
+      console.log(this.items);
     },
     increaseQty(item) {
       let existing = this.items.find((d) => d.id == item.id);
@@ -40,11 +38,12 @@ export const productStore = defineStore("cartStore", {
     },
     decreaseQty(item) {
       let existing = this.items.find((d) => d.id === item.id);
-      if (existing.quantity > 0) {
+      if (existing.quantity > 1) {
         existing.quantity -= 1;
       } else {
-        this.items=this.items.filter((t)=> t.id !=item.id)
-        toast.error('Item removed from cart')
+        //this.items=this.items.filter((t)=> t.id !=existing.id)
+        this.removeItem(existing);
+        toast.error("Item removed from cart");
       }
     },
   },

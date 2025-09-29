@@ -8,7 +8,7 @@
   <div v-for="(item, index) in items" :key="index" class="relative bg-white border rounded-xl shadow-md p-4 flex flex-col items-center">
 
     <!-- Wishlist Icon Button (Top-right corner) -->
-    <button class="absolute top-3 right-3 text-gray-400 hover:text-red-500 cursor-pointer transition-colors">
+    <button class="absolute top-3 right-3 text-gray-400 hover:text-red-500 cursor-pointer transition-colors" >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current" viewBox="0 0 24 24">
         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 
                  5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 
