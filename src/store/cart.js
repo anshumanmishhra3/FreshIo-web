@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 import { toast } from "vue3-toastify";
-export const productStore = defineStore('cartStor',{
+export const productStore = defineStore('cartStore',{
     state : ()=>{
         return{
             items : [],
@@ -11,12 +11,20 @@ export const productStore = defineStore('cartStor',{
     actions : {
         addToCart(item){
             console.log('aagya')
-            console.log(item);
+            // console.log(item);
+            this.qty++;
             toast.success("Items added to Cart")
+            this.items.push(item);
+            this.items.forEach((ele)=>{
+                console.log(ele);
+            })
         },
         addToWishlist(item){
-            toast.success("Items added to Wishlist❤️")
+            toast("Items added to Wishlist❤️",{
+                "type":"default"
+            })
         }
-    }
+    },
+    persist : true
 })
 

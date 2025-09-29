@@ -9,11 +9,9 @@ import 'vue3-toastify/dist/index.css';
 
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
-const vuetify = createVuetify()
 
 createApp(App)
   .use(router)
   .use(pinia)
   .use(Vue3Toastify)
-  .use(vuetify)
   .mount('#app')
