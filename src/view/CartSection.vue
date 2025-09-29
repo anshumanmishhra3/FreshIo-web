@@ -33,19 +33,19 @@
             </div>
             <div class="flex justify-between mb-2">
                 <p class="text-lg font-medium text-gray-700">Discount</p>
-                <p class="text-lg font-medium text-gray-700">- $5.00</p>
+                <p class="text-lg font-medium text-gray-700" :discount="discount"> $5.00</p>
             </div>
             <div class="flex justify-between mb-2">
                 <p class="text-lg font-medium text-gray-700">Total</p>
-                <p class="text-lg font-medium text-gray-700">$15.97</p>
+                <p class="text-lg font-medium text-gray-700">${{ (item.totalCount-5).toFixed(2) }}</p>
             </div>
         </div>
 
         <!-- Coupon Section -->
         <div class="flex mb-6 ml-4">
-            <input type="text" placeholder="Enter coupon code" class="w-44 p-2 border border-gray-300 rounded-md mr-2">
+            <input type="text" placeholder="Enter coupon code" class="w-44 p-2 border border-gray-300 rounded-md mr-2" v-model="couponInput">
             <!-- Adjusted width here -->
-            <button class="px-4 py-2 bg-red-500 text-white rounded-md">Apply Coupon</button>
+            <button class="px-4 py-2 bg-red-500 text-white rounded-md" @click="applyCoupon">Apply Coupon</button>
         </div>
 
         <!-- Checkout Button -->
@@ -62,7 +62,14 @@
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import { productStore } from '../store/cart';
+import { ref } from 'vue';
 
 
-const item = productStore();
+let couponInput = ref('');
+
+let item = productStore();
+
+function applyCoupon(){
+    console.log(couponInput.value);
+}
 </script>

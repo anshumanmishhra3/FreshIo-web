@@ -9,8 +9,6 @@
         alt="logo"
         class="md:h-14 md:pl-12 mr-8 h-14 cursor-pointer"
       >
-
-
       <!-- Search bar -->
       <div
         class="hidden sm:flex border-2 rounded-2xl items-center h-8 pl-4 hover:bg-[#61df91]"
@@ -32,7 +30,6 @@
         <div
           class="hidden sm:flex items-center justify-center w-12 h-12 border-2 border-green-500 rounded-full cursor-pointer profile-icon-hover"
         >
-        <RouterLink to="/profile"></RouterLink>
 
           <i class="fa fa-user text-2xl"></i>
         </div>
@@ -60,14 +57,14 @@
           <i class="fa fa-shopping-cart text-2xl"></i>
           <span
             class="absolute -top-1 -right-1 bg-yellow-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full"
-            >1</span
+            >{{ product.qty }}</span
           >
         </router-link>
         </div>
 
         <!-- Price -->
         <div class="hidden sm:flex items-center justify-center font-bold text-lg">
-          ₹0.00
+          ₹{{ (product.totalCount).toFixed(2) }}
         </div>
         <!-- Hamburger (small screens only) -->
         <button

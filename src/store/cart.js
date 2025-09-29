@@ -8,7 +8,9 @@ export const productStore = defineStore("cartStore", {
     };
   },
   getters: {
-    totalCount : (state)=> state.items.reduce((sum,item)=>sum+item.price*item.quantity,0)
+    totalCount : (state)=> state.items.reduce((sum,item)=>sum+item.price*item.quantity,0),
+    qty : (state)=> state.items.length
+
   },
   actions: {
     addToCart(item) {
@@ -46,6 +48,9 @@ export const productStore = defineStore("cartStore", {
         toast.error("Item removed from cart");
       }
     },
+    
+    
+    
   },
   persist: true,
 });
