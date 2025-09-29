@@ -57,7 +57,7 @@
           <i class="fa fa-shopping-cart text-2xl"></i>
           <span
             class="absolute -top-1 -right-1 bg-yellow-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full"
-            >1</span
+            >{{ product.quantity }}</span
           >
         </router-link>
         </div>
@@ -80,9 +80,9 @@
 
 <script setup>
 import { ref } from "vue";
-
+import { productStore } from "../store/cart";
 const searchQuery = ref("");
-
+const product = productStore();
 const handleSearch = () => {
   console.log("Searching for:", searchQuery.value);
 };
