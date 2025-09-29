@@ -44,10 +44,10 @@
     </div>
     <!-- Action Buttons: Cart + Wishlist -->
     <div class="flex gap-2 w-full mt-auto">
-      <button class="flex-1 cursor-pointer px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+      <button class="flex-1 cursor-pointer px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors" :key="item.id" @click="btn.addToCart(item)">
         Add to Cart
       </button>
-      <button class="flex-1 cursor-pointer px-4 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-red-50 transition-colors">
+      <button class="flex-1 cursor-pointer px-4 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-red-50 transition-colors" @click="btn.addToWishlist(item)">
         Wishlist
       </button>
     </div>
@@ -65,7 +65,8 @@
 <script setup>
 import {onMounted,ref } from "vue";
 import axios from "axios";
-
+import { productStore } from "../store/cart";
+let btn = productStore();
 let items = ref([])
 
 onMounted(async () => {

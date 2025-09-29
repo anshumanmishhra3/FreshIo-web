@@ -7,8 +7,6 @@ import WishList from '../view/WishList.vue';
         path: '/',
         name: 'home',
         component: HomeSection
-
-
       },
       {
         path: '/cart',
@@ -27,4 +25,4 @@ import WishList from '../view/WishList.vue';
       routes,
     });
 
-    export default router;
+export default router;
