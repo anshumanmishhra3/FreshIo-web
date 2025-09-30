@@ -127,10 +127,6 @@ const paymentLogos = [
     alt: "Bitcoin",
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/1/16/Western_Union_logo.svg",
-    alt: "Western Union",
-  },
-  {
     src: "https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png",
     alt: "Visa",
   },

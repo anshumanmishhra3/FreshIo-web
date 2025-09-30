@@ -10,7 +10,6 @@ export const productStore = defineStore("cartStore", {
   getters: {
     totalCount : (state)=> state.items.reduce((sum,item)=>sum+item.price*item.quantity,0),
     qty : (state)=> state.items.length
-
   },
   actions: {
     addToCart(item) {

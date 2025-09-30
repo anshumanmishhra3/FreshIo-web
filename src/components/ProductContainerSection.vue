@@ -30,6 +30,8 @@
     <h2 class="font-semibold text-center text-base md:text-lg mb-1 truncate w-full">
       {{ item.title }}
     </h2>
+
+    
     
     <div class="flex gap-3">
       
@@ -44,7 +46,7 @@
     </div>
     <!-- Action Buttons: Cart + Wishlist -->
     <div class="flex gap-2 w-full mt-auto">
-      <button class="flex-1 cursor-pointer px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors" :key="item.id" @click="btn.addToCart(item)">
+      <button class="flex-1 cursor-pointer px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors" :key="item.id"  @click="btn.addToCart(item)">
         Add to Cart
       </button>
       <button class="flex-1 cursor-pointer px-4 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-red-50 transition-colors" @click="btn.addToWishlist(item)">
@@ -53,11 +55,9 @@
     </div>
   </div>
 </div>
-
-
     <!-- Loading message -->
     <p v-if="loading" class="text-center text-gray-500 mt-4">
-      Loading products...
+      Loading products...      
     </p>
   </section>
 </template>
@@ -66,6 +66,7 @@
 import {onMounted,ref } from "vue";
 import axios from "axios";
 import { productStore } from "../store/cart";
+import { authStore } from "../store/auth";
 let btn = productStore();
 let items = ref([])
 
@@ -73,7 +74,8 @@ onMounted(async () => {
   const res = await  axios.get('https://fakestoreapi.com/products')
   console.log(res.data)
   items.value = res.data
-
 });
+
+const auth  = authStore();
 
 </script>

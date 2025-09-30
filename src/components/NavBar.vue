@@ -26,15 +26,18 @@
       </div>
 
       <!-- Icons -->
+      
       <div class="flex items-center space-x-4">
         <!-- Profile Icon -->
-
+        <router-link :to="'/login'">
         <div
           class="hidden sm:flex items-center justify-center w-12 h-12 border-2 border-green-500 rounded-full cursor-pointer profile-icon-hover"
         >
-
-          <i class="fa fa-user text-2xl"></i>
+          <i v-if="auth.loggedin" @click="auth.handleLogout" class="fa fa-user text-2xl"></i>
+          <button v-else class="rounded-xl p-3 text-white font-bold log-in-btn cursor-pointer">Login</button>
         </div>
+      </router-link>
+        
 
         <!-- Favorites Icon -->
         <div
@@ -52,23 +55,22 @@
 
         <!-- Cart Icon -->
         
+        <router-link :to="'/cart'">
         <div
           class="flex relative items-center justify-center w-12 h-12 border-2 border-yellow-500 rounded-full cursor-pointer cart-icon-hover"
         >
-        <router-link :to="'/cart'">
           <i class="fa fa-shopping-cart text-2xl"></i>
           <span
             class="absolute -top-1 -right-1 bg-yellow-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full"
             >{{ product.qty }}</span
           >
-        </router-link>
         </div>
+        </router-link>
 
         <!-- Price -->
         <div class="hidden sm:flex items-center justify-center font-bold text-lg">
           ₹{{ (product.totalCount).toFixed(2) }}
         </div>
-        <!-- Hamburger (small screens only) -->
         <button
           class="flex md:hidden items-center justify-center text-4xl ml-10 font-bold"
           @click="toggleMenu"
@@ -83,8 +85,12 @@
 <script setup>
 import { ref } from "vue";
 import { productStore } from "../store/cart";
+import { authStore } from "../store/auth";
 const searchQuery = ref("");
+
+const auth = authStore();
 const product = productStore();
+
 const handleSearch = () => {
   console.log("Searching for:", searchQuery.value);
 };
