@@ -4,7 +4,6 @@
     background-color: #E0EBD1;
 }
 
-
 .hero-text-color-left {
     color: #0A472E;
 }
@@ -12,6 +11,7 @@
 .product-price-color{
     color: #B5BF45;
 }
+
 .fresh-tasty {
     color: #C3CA64;
 }
@@ -56,7 +56,6 @@
     align-items: center;
     justify-content: space-around;
     margin-top: 1rem;
-    /* margin-left: 2rem; */
 }
 
 .nav-3-items:hover {
@@ -72,7 +71,6 @@
     margin-top: 1rem;
 }
 
-
 .container-1 {
     grid-row: span 2;
     border-radius: 10px;
@@ -80,35 +78,19 @@
     color: white;
     font-size: 2rem;
     display: flex;
-    /* align-items: center; */
     justify-content: center;
     margin-left: 2rem;
-    /* background-image: url(); */
-    background-repeat: no-repeat;
-    
 }
 
-.container-1>img {
+.container-1 > img {
     height: 34rem;
     margin-left: 24rem;
 }
 
-.container-2 {
+.container-2, .container-3 {
     border-radius: 10px;
     padding: 20px;
     color: white;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 2rem;
-}
-
-
-.container-3 {
-    border-radius: 10px;
-    padding: 20px;
-    color: black;
     font-size: 2rem;
     display: flex;
     align-items: center;
@@ -125,7 +107,6 @@
     margin-top: 9rem;
     margin-right: 28rem;
     font-size: 3rem;
-    
 }
 
 .hero-left-h1-down{
@@ -140,56 +121,141 @@
     text-decoration: underline;
     font-size: 20px;
 }
+
 .custom-hero-top-right {
     background-color: #D8D8DA;
     background-image: url(https://demo2.pavothemes.com/freshio/wp-content/uploads/2020/08/image1-h2.jpg);
 }
 
-/* .custom-hero-top-right>img:hover{
-    transform: translateX(10%);
-} */
-
 .custon-hero-down-right {
     background-color: #134A34;
     background-image: url(https://demo2.pavothemes.com/freshio/wp-content/uploads/2020/08/image2-h2.jpg);
 }
-.summer-sale{
+
+.summer-sale {
     font-size: 22px;
 }
-.discount-text{
+
+.discount-text {
     font-size: 50px;
     color: #F4ED23;
 }
-.p-sub-heading{
+
+.p-sub-heading {
     font-size: 12px;
 }
 
-.product-container{
+.product-container {
     height: 70vh;
     width: 25vw;
-
 }
 
-.product-container>p:hover{
-    color : #818A1D;
+.product-container > p:hover {
+    color: #818A1D;
 }
 
-.product-img{
+.product-img {
     height: 40vh;
     width: 30vw;
 }
 
-.hrs{
+.hrs {
     height: 4px;
     width: 100px;
     background-color: red;
 }
 
-.hrs:hover{
+.hrs:hover {
     width: 130px;
     background-color: red;
 }
 
-.cart-button:hover{
+.cart-button:hover {
     color: #A7B224;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto; 
+    }
+
+    .container-1 {
+        width: 100%;  
+        height: 300px;
+        margin: 0;  
+        display: flex;
+        justify-content: center;
+        position: relative;  
+    }
+
+    .container-1 > img {
+        width: 100%;  
+        height: auto;
+        object-fit: cover;
+    }
+
+    .heading-left, .hero-left-h1-up, .hero-left-h1-down, .shop-now-left {
+        position: relative;  
+        margin: 0;
+        text-align: center;
+    }
+
+    .heading-left {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .hero-left-h1-up, .hero-left-h1-down {
+        font-size: 2rem;
+        margin-top: 1rem;
+    }
+
+    .shop-now-left {
+        font-size: 1rem;
+        margin-top: 1rem;
+        text-decoration: none;
+    }
+
+    .container-2, .container-3 {
+        width: 100%;  
+        margin-top: 1rem;
+        text-align: center;
+        font-size: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container-2 h1, .container-3 h1 {
+        font-size: 1.5rem;
+    }
+
+    .discount-text {
+        font-size: 2rem;
+    }
+
+    .p-sub-heading {
+        font-size: 1rem;
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .container-1 {
+        grid-row: span 1;
+        width: 100%;
+    }
+
+    .container-2, .container-3 {
+        grid-row: span 1;
+        font-size: 1.2rem;
+        padding: 10px;
+    }
 }

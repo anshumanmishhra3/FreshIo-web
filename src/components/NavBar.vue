@@ -1,14 +1,16 @@
 <template>
   <header class="bg-white shadow-md">
-      <router-link :to="'/'"></router-link>
 
     <nav class="flex items-center justify-around h-[5rem]">
       <!-- Logo -->
+      <router-link :to="'/'">
+
       <img
         src="https://demo2.pavothemes.com/freshio/wp-content/uploads/2020/08/logo.svg"
         alt="logo"
         class="md:h-14 md:pl-12 mr-8 h-14 cursor-pointer"
       >
+      </router-link>
       <!-- Search bar -->
       <div
         class="hidden sm:flex border-2 rounded-2xl items-center h-8 pl-4 hover:bg-[#61df91]"

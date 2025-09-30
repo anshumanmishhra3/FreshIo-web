@@ -70,6 +70,9 @@ let couponInput = ref('');
 let item = productStore();
 
 function applyCoupon(){
-    console.log(couponInput.value);
+    if(couponInput.value==='SAVE10'){
+        console.log('discount added');
+    }
+    
 }
 </script>
