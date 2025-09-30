@@ -1,8 +1,8 @@
 <template>
   <div class="nav-2 items-center md:flex sm:ml-8 ml-3">
     <!-- Left section -->
-    <div class="gap-4 items-center left-section-nav flex flex-row">
-      <button class="cursor-pointer font-bold h-[18rem] text-white ml-[0.6rem]">
+    <div class="gap-3 items-center left-section-nav flex flex-row">
+      <button class="cursor-pointer font-bold h-[18rem] text-white ml-[0.3rem]">
         &#9776;
       </button>
       <p class="text-white hidden sm:block">Shop By Department</p>

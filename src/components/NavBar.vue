@@ -57,11 +57,11 @@
         
         <router-link :to="'/cart'">
         <div
-          class="flex relative items-center justify-center w-12 h-12 border-2 border-yellow-500 rounded-full cursor-pointer cart-icon-hover"
+          class="flex relative items-center justify-center md:w-12 md:h-12 w-16 h-16 border-2 border-yellow-500 rounded-full cursor-pointer cart-icon-hover"
         >
-          <i class="fa fa-shopping-cart text-2xl"></i>
+          <i class="fa fa-shopping-cart text-4xl sm:text-2xl"></i>
           <span
-            class="absolute -top-1 -right-1 bg-yellow-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full"
+            class="absolute -top-1 -right-1 bg-yellow-500 text-white text-lg sm:text-xs font-bold h-7 w-7 sm:w-5 sm:h-5 flex items-center justify-center rounded-full"
             >{{ product.qty }}</span
           >
         </div>

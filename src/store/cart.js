@@ -13,13 +13,11 @@ export const productStore = defineStore("cartStore", {
       const userId = auth.user?.id;
       return userId ? state.items[userId] || [] : [];
     },
-
     totalCount: (state) => {
       const auth = authStore();
       const userId = auth.user?.id;
       if (!userId || !state.items[userId]) return 0;
 
-      // Total price = sum of price * quantity
       return state.items[userId].reduce((sum, item) => sum + item.price * item.quantity, 0);
     },
 
@@ -28,7 +26,7 @@ export const productStore = defineStore("cartStore", {
       const userId = auth.user?.id;
       if (!userId || !state.items[userId]) return 0;
 
-      // Total number of distinct items
+      if(userId.length==4)  throw new Error("This is the error sending from the user")
       return state.items[userId].length;
     },
   },
@@ -39,7 +37,10 @@ export const productStore = defineStore("cartStore", {
       const userId = auth.user?.id;
 
       if (!auth.loggedin || !userId) {
-        toast.info("Please login first");
+        toast.info("Please login first",{
+          autoClose : 1000,
+        }
+        );
         return;
       }
 
@@ -51,10 +52,14 @@ export const productStore = defineStore("cartStore", {
 
       if (existing) {
         existing.quantity += 1;
-        toast.info("Item quantity updated");
+        toast.info("Item quantity updated",{
+          autoClose : 1000,
+        });
       } else {
         this.items[userId].push({ ...item, quantity: 1 });
-        toast.success("Item added to Cart");
+        toast.success("Item added to Cart",{
+          autoClose : 1000,
+        });
       }
     },
 
@@ -71,7 +76,9 @@ export const productStore = defineStore("cartStore", {
       if (!userId || !this.items[userId]) return;
 
       this.items[userId] = this.items[userId].filter((t) => t.id !== item.id);
-      toast.error("Item removed from cart");
+      toast.error("Item removed from cart",{
+        autoClose:1000
+      });
     },
 
     increaseQty(item) {

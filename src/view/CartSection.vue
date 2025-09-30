@@ -33,11 +33,11 @@
             </div>
             <div class="flex justify-between mb-2">
                 <p class="text-lg font-medium text-gray-700">Discount</p>
-                <p class="text-lg font-medium text-gray-700" :discount="discount"> $5.00</p>
+                <p class="text-lg font-medium text-gray-700" :discount="discount"> $ {{discount}}</p>
             </div>
             <div class="flex justify-between mb-2">
                 <p class="text-lg font-medium text-gray-700">Total</p>
-                <p class="text-lg font-medium text-gray-700">${{ (item.totalCount-5).toFixed(2) }}</p>
+                <p class="text-lg font-medium text-gray-700">${{ (item.totalCount-discount).toFixed(2) }}</p>
             </div>
         </div>
 
@@ -45,7 +45,7 @@
         <div class="flex mb-6 ml-4">
             <input type="text" placeholder="Enter coupon code" class="w-44 p-2 border border-gray-300 rounded-md mr-2" v-model="couponInput">
             <!-- Adjusted width here -->
-            <button class="px-4 py-2 bg-red-500 text-white rounded-md" @click="applyCoupon">Apply Coupon</button>
+            <button class="px-4 py-2 bg-red-500 cursor-pointer text-white rounded-md" @click="applyCoupon">Apply Coupon</button>
         </div>
 
         <!-- Checkout Button -->
@@ -64,15 +64,20 @@ import Footer from '../components/Footer.vue';
 import { productStore } from '../store/cart';
 import { ref } from 'vue';
 import { authStore } from '../store/auth';
+import { toast } from 'vue3-toastify';
 
 let couponInput = ref('');
-
+let discount = ref(0);
 let item = productStore();
 const auth = authStore()
 const userId = auth.user?.id
 function applyCoupon(){
-    if(couponInput.value==='SAVE10'){
-        console.log('discount added');
+    if(couponInput.value.toUpperCase()==='SAVE10'){
+        discount.value = 10;
+        toast.success("Discount Added Successfully")
+        couponInput.value="";
+    }else{
+        toast.error("No Coupon Found")
     }
     
 }

@@ -1,7 +1,7 @@
 <template>
   <section class="bg-gray-50 min-h-screen flex items-center justify-center">
     <!-- Main Container -->
-    <div class="flex flex-col md:flex-row items-center justify-center bg-white rounded-xl shadow-lg p-8 md:p-16 max-w-4xl w-full">
+    <div class="flex flex-col md:flex-row items-center justify-center bg-white rounded-xl shadow-lg  p-8 md:p-16 max-w-4xl w-full">
       
       <!-- Left Hero Section -->
       <div class="md:w-1/2 flex justify-center mb-8 md:mb-0">
