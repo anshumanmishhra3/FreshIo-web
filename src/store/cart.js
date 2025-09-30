@@ -1,55 +1,107 @@
 import { defineStore } from "pinia";
-import axios from "axios";
 import { toast } from "vue3-toastify";
+import { authStore } from "./auth";  // useAuthStore is the proper import name for your auth store
+
 export const productStore = defineStore("cartStore", {
-  state: () => {
-    return {
-      items: [],
-    };
-  },
+  state: () => ({
+    items: {},  
+  }),
+
   getters: {
-    totalCount : (state)=> state.items.reduce((sum,item)=>sum+item.price*item.quantity,0),
-    qty : (state)=> state.items.length
+    getUserItems: (state) => {
+      const auth = authStore();
+      const userId = auth.user?.id;
+      return userId ? state.items[userId] || [] : [];
+    },
+
+    totalCount: (state) => {
+      const auth = authStore();
+      const userId = auth.user?.id;
+      if (!userId || !state.items[userId]) return 0;
+
+      // Total price = sum of price * quantity
+      return state.items[userId].reduce((sum, item) => sum + item.price * item.quantity, 0);
+    },
+
+    qty: (state) => {
+      const auth = authStore();
+      const userId = auth.user?.id;
+      if (!userId || !state.items[userId]) return 0;
+
+      // Total number of distinct items
+      return state.items[userId].length;
+    },
   },
+
   actions: {
     addToCart(item) {
-      let existing = this.items.find((d) => d.id == item.id);
+      const auth = authStore();
+      const userId = auth.user?.id;
+
+      if (!auth.loggedin || !userId) {
+        toast.info("Please login first");
+        return;
+      }
+
+      if (!this.items[userId]) {
+        this.items[userId] = [];
+      }
+
+      const existing = this.items[userId].find((d) => d.id === item.id);
+
       if (existing) {
         existing.quantity += 1;
-        toast.info("item quantity updated");
+        toast.info("Item quantity updated");
       } else {
-        this.items.push({ ...item, quantity: 1 });
-        toast.success("Items added to Cart");
-        console.log(item);
+        this.items[userId].push({ ...item, quantity: 1 });
+        toast.success("Item added to Cart");
       }
     },
+
     addToWishlist(item) {
-      toast("Items added to Wishlist❤️", {
+      toast("Item added to Wishlist ❤️", {
         type: "default",
       });
     },
-    removeItem(existing) {
-      this.items = this.items.filter((t) => t.id != existing.id);
-      console.log(this.items);
+
+    removeItem(item) {
+      const auth = authStore();
+      const userId = auth.user?.id;
+
+      if (!userId || !this.items[userId]) return;
+
+      this.items[userId] = this.items[userId].filter((t) => t.id !== item.id);
+      toast.error("Item removed from cart");
     },
+
     increaseQty(item) {
-      let existing = this.items.find((d) => d.id == item.id);
-      if (existing.quantity >= 10) return;
-      existing.quantity += 1;
+      const auth = authStore();
+      const userId = auth.user?.id;
+
+      if (!userId || !this.items[userId]) return;
+
+      const existing = this.items[userId].find((d) => d.id === item.id);
+      if (existing && existing.quantity < 10) {
+        existing.quantity += 1;
+      }
     },
+
     decreaseQty(item) {
-      let existing = this.items.find((d) => d.id === item.id);
+      const auth = authStore();
+      const userId = auth.user?.id;
+
+      if (!userId || !this.items[userId]) return;
+
+      const existing = this.items[userId].find((d) => d.id === item.id);
+      if (!existing) return;
+
       if (existing.quantity > 1) {
         existing.quantity -= 1;
       } else {
-        //this.items=this.items.filter((t)=> t.id !=existing.id)
         this.removeItem(existing);
-        toast.error("Item removed from cart");
       }
     },
-    
-    
-    
   },
+
   persist: true,
 });

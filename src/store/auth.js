@@ -22,6 +22,8 @@ export const authStore = defineStore('auth',({
             let {accessToken, refreshToken, ...userdata} = response.data;
                 toast.success("Login Successfull")
                 router.push({name: 'cart'})
+                this.user = userdata
+                console.log(user)
                 this.loggedin=true;
             }
         catch (error) {

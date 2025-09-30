@@ -8,7 +8,7 @@
         </div>
 
         <!-- Cart Items -->
-        <div class="space-y-4 mb-6" v-for="product in item.items" :key="product.id">
+        <div class="space-y-4 mb-6" v-for="product in item.items[userId]" :key="product.id">
             <div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-md">
                 <img :src="product.image" alt="Item Image" class="w-20 h-20 object-cover rounded-md">
                 <div class="flex-1 ml-4">
@@ -63,12 +63,13 @@ import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import { productStore } from '../store/cart';
 import { ref } from 'vue';
-
+import { authStore } from '../store/auth';
 
 let couponInput = ref('');
 
 let item = productStore();
-
+const auth = authStore()
+const userId = auth.user?.id
 function applyCoupon(){
     if(couponInput.value==='SAVE10'){
         console.log('discount added');
