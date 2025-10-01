@@ -35,7 +35,6 @@ export const productStore = defineStore("cartStore", {
     addToCart(item) {
       const auth = authStore();
       const userId = auth.user?.id;
-
       if (!auth.loggedin || !userId) {
         toast.info("Please login first",{
           autoClose : 1000,

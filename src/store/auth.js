@@ -8,6 +8,7 @@ export const authStore = defineStore('auth',({
             email : '',
             password : '',
             refreshToken : '',
+            token : '',
             firstName : '',
             user : null,
             loggedin : false,
@@ -20,6 +21,8 @@ export const authStore = defineStore('auth',({
             let response =await axios.post('https://dummyjson.com/auth/login',{email,username ,password});
             console.log(response.data);
             let {accessToken, refreshToken, ...userdata} = response.data;
+                this.token=accessToken
+                this.refreshToken = refreshToken
                 toast.success("Login Successfull")
                 router.push({name: 'cart'})
                 this.user = userdata
