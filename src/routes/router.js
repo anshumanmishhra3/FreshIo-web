@@ -28,7 +28,8 @@ import { authStore } from '../store/auth';
         name : 'login',
         component : LoginPage,
         
-      }
+      },
+
     ];
 
     const router = createRouter({
