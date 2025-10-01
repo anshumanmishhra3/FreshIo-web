@@ -40,7 +40,6 @@
                 <p class="text-lg font-medium text-gray-700">${{ (item.totalCount-discount).toFixed(2) }}</p>
             </div>
         </div>
-
         <!-- Coupon Section -->
         <div class="flex mb-6 ml-4">
             <input type="text" placeholder="Enter coupon code" class="w-44 p-2 border border-gray-300 rounded-md mr-2" v-model="couponInput">

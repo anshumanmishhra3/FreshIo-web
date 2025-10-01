@@ -1,12 +1,11 @@
 import { defineStore } from "pinia";
 import { toast } from "vue3-toastify";
-import { authStore } from "./auth"; // useAuthStore is the proper import name for your auth store
+import { authStore } from "./auth"; 
 
 export const productStore = defineStore("cartStore", {
   state: () => ({
     items: {},  
     wishlist : {},
-    items: {},
   }),
 
   getters: {
@@ -78,7 +77,7 @@ export const productStore = defineStore("cartStore", {
         return;
       }
 
-      if (!this.wishlist[userId]) {
+      if (!this.wishlist[userId] && auth.loggedin) {
         this.wishlist[userId] = [];
       }
 
@@ -95,10 +94,8 @@ export const productStore = defineStore("cartStore", {
           autoClose : 1000,
         });
       }
-      
-      
     },
-
+    
     removeItem(item) {
       const auth = authStore();
       const userId = auth.user?.id;
