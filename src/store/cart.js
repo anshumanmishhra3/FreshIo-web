@@ -4,12 +4,9 @@ import { authStore } from "./auth"; // useAuthStore is the proper import name fo
 
 export const productStore = defineStore("cartStore", {
   state: () => ({
-<<<<<<< HEAD
     items: {},  
     wishlist : {},
-=======
     items: {},
->>>>>>> 8f7c2e06ef4b83c0773492ab84f93144760c04af
   }),
 
   getters: {
