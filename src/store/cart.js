@@ -5,6 +5,7 @@ import { authStore } from "./auth";  // useAuthStore is the proper import name f
 export const productStore = defineStore("cartStore", {
   state: () => ({
     items: {},  
+    wishlist : {},
   }),
 
   getters: {
@@ -63,9 +64,36 @@ export const productStore = defineStore("cartStore", {
     },
 
     addToWishlist(item) {
-      toast("Item added to Wishlist ❤️", {
-        type: "default",
-      });
+      console.log('added to wishlist')
+      const auth = authStore();
+      const userId = auth.user?.id;
+      if (!auth.loggedin || !userId) {
+        toast.info("Please login first",{
+          autoClose : 1000,
+        }
+        );
+        return;
+      }
+
+      if (!this.wishlist[userId]) {
+        this.wishlist[userId] = [];
+      }
+
+      const existing = this.wishlist[userId].find((d) => d.id === item.id);
+
+      if (existing) {
+      
+        toast.info("Already in wishlist",{
+          autoClose : 1000,
+        });
+      } else {
+        this.wishlist[userId].push({ ...item, quantity: 1 });
+        toast.success("Item added to wishlist",{
+          autoClose : 1000,
+        });
+      }
+      
+      
     },
 
     removeItem(item) {
