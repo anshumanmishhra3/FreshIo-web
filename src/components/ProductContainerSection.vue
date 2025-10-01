@@ -46,10 +46,10 @@
     </div>
     <!-- Action Buttons: Cart + Wishlist -->
     <div class="flex gap-2 w-full mt-auto">
-      <button class="flex-1 cursor-pointer px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors" :key="item.id"  @click="btn.addToCart(item)">
+      <button class="flex-1 cursor-pointer px-1 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors" :key="item.id"  @click="btn.addToCart(item)">
         Add to Cart
       </button>
-      <button class="flex-1 cursor-pointer px-4 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-red-50 transition-colors" @click="btn.addToWishlist(item)">
+      <button class="flex-1 cursor-pointer px-1 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-red-50 transition-colors" @click="btn.addToWishlist(item)">
         Wishlist
       </button>
     </div>
