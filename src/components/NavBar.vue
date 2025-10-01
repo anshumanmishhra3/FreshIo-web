@@ -1,7 +1,7 @@
 <template>
   <header class="bg-white shadow-md">
 
-    <nav class="flex items-center justify-around h-[5rem]">
+    <nav class="flex items-center justify-between h-[5rem]">
       <!-- Logo -->
       <router-link :to="'/'">
 
@@ -27,11 +27,11 @@
 
       <!-- Icons -->
       
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center md:mr-[1.7rem] space-x-4">
         <!-- Profile Icon -->
         <router-link :to="'/login'">
         <div
-          class="hidden sm:flex items-center justify-center w-12 h-12 border-2 border-green-500 rounded-full cursor-pointer profile-icon-hover"
+          class="hidden sm:flex items-center justify-center w-10 h-10 border-2 border-green-500 rounded-full cursor-pointer profile-icon-hover"
         >
           <i v-if="auth.loggedin" @click="auth.handleLogout" class="fa fa-user text-2xl"></i>
           <button v-else class="rounded-xl p-3 text-white font-bold log-in-btn cursor-pointer">Login</button>
@@ -41,7 +41,7 @@
 
         <!-- Favorites Icon -->
         <div
-          class="hidden md:flex relative items-center justify-center w-12 h-12 border-2 border-red-500 rounded-full cursor-pointer favorite-icon-hover"
+          class="hidden md:flex relative items-center justify-center w-10 h-10 border-2 border-red-500 rounded-full cursor-pointer favorite-icon-hover"
         > 
         <router-link :to="'/wishlist'">
 
@@ -57,7 +57,7 @@
         
         <router-link :to="'/cart'">
         <div
-          class="flex relative items-center justify-center md:w-12 md:h-12 w-16 h-16 border-2 border-yellow-500 rounded-full cursor-pointer cart-icon-hover"
+          class="flex relative items-center justify-center md:w-10 md:h-10 w-16 h-16 border-2 border-yellow-500 rounded-full cursor-pointer cart-icon-hover"
         >
           <i class="fa fa-shopping-cart text-4xl sm:text-2xl"></i>
           <span
